@@ -7,7 +7,7 @@ import seaborn as sns
 
 # Load the saved model
 try:
-    model = tf.keras.models.load_model('cancer_detection_model.h5')
+    model = tf.keras.models.load_model('cancer_detection_model2.h5')
 except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
 
