@@ -1,3 +1,4 @@
+
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
@@ -12,11 +13,6 @@ except Exception as e:
 
 # Define the relatable class labels
 class_labels = ['adenocarcinoma', 'large.cell.carcinoma', 'squamous.cell.carcinoma', 'normal']
-
-# Function to display limited rows of the pixel table
-def display_limited_rows(pixel_table, num_rows=50):
-    st.subheader(f"Pixel Values of the Processed Image (Showing {num_rows} rows)")
-    st.write(pixel_table.head(num_rows))
 
 # Streamlit app
 st.title("Lung Cancer Detection")
@@ -42,10 +38,23 @@ if page == "Prediction":
         test_image = np.expand_dims(test_image, axis=0)
         test_image = test_image / 255.0  # Normalize
 
+        # Display a table showing pixel values
+        st.subheader("Pixel Values of the Processed Image")
+        pixel_table = pd.DataFrame(test_image.reshape(-1, 3), columns=['Red', 'Green', 'Blue']).head(50)
+        st.table(pixel_table)
+        
         # Perform inference for prediction
         st.write("Performing inference...")
+
+        # Add processing stage: Displaying intermediate layer activations
+        intermediate_layer_model = tf.keras.Model(inputs=model.input, outputs=model.layers[0].output)
+        intermediate_output = intermediate_layer_model.predict(test_image)
+
+        st.subheader("Intermediate Layer Activations")
+        st.image(intermediate_output[0, :, :, 0], caption="Intermediate Activation", use_column_width=True, cmap='viridis')
+
         predictions = model.predict(test_image)
-        
+
         # Display probability scores for each class
         st.write("Class Probabilities:")
         for label, probability in zip(class_labels, predictions[0] * 100):
@@ -56,7 +65,6 @@ if page == "Prediction":
         predicted_class_label = class_labels[predicted_class_index]
         predicted_class_probability = predictions[0][predicted_class_index] * 100
         st.success(f'Predicted Class: {predicted_class_label} with {predicted_class_probability:.2f}% probability')
-
 
 elif page == "Performance Analysis":
     # Perform inference for performance analysis
