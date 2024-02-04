@@ -53,9 +53,10 @@ if page == "Prediction":
         st.subheader("Intermediate Layer Activations")
 
         # Create an image with the desired colormap using Matplotlib
-        plt.imshow(intermediate_output[0, :, :, 0], cmap='viridis')
-        plt.axis('off')
-        st.pyplot()
+        fig, ax = plt.subplots()
+        ax.imshow(intermediate_output[0, :, :, 0], cmap='viridis')
+        ax.axis('off')
+        st.pyplot(fig)
 
         predictions = model.predict(test_image)
 
