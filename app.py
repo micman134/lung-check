@@ -14,6 +14,11 @@ except Exception as e:
 # Define the relatable class labels
 class_labels = ['adenocarcinoma', 'large.cell.carcinoma', 'squamous.cell.carcinoma', 'normal']
 
+# Function to display limited rows of the pixel table
+def display_limited_rows(pixel_table, num_rows=50):
+    st.subheader(f"Pixel Values of the Processed Image (Showing {num_rows} rows)")
+    st.write(pixel_table.head(num_rows))
+
 # Streamlit app
 st.title("Lung Cancer Detection")
 
