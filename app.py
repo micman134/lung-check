@@ -52,6 +52,10 @@ if page == "Prediction":
 elif page == "Performance Analysis":
     # Perform inference for performance analysis
     st.subheader("Model Performance Analysis")
+    st.text("CNN Model Classification Report")
+    st.image('cnn_classification_report.png', caption="CNN Model", use_column_width=True)
+    st.text("SVM Model Classification Report")
+    st.image('svm.png', caption="CNN Model", use_column_width=True)
     st.text("Performance Analysis For Normal Lungs")
     st.image('normal.png', caption="Normal Lungs", use_column_width=True)
     st.text("Performance Analysis For Large cell carcinoma Cancer")
