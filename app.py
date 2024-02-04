@@ -53,7 +53,7 @@ elif page == "Performance Analysis":
     # Perform inference for performance analysis
     st.subheader("Model Performance Analysis")
     st.text("CNN Model Classification Report")
-    st.image('cnn_classification_report.png', caption="CNN Model", use_column_width=True)
+    st.image('cnn_classification_report.PNG', caption="CNN Model", use_column_width=True)
     st.text("SVM Model Classification Report")
     st.image('svm.png', caption="SVM Model", use_column_width=True)
 
@@ -61,7 +61,7 @@ elif page == "Performance Analysis":
     st.image('accuracy.png', caption="Model Accuracy", use_column_width=True)
     
     st.text("Model Loss")
-    st.image('loss.png', caption="Model Accuracy", use_column_width=True)
+    st.image('loss.PNG', caption="Model Accuracy", use_column_width=True)
     
     
     st.text("Performance Analysis For Normal Lungs")
