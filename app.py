@@ -24,13 +24,13 @@ if page == "Prediction":
 
     # Model performance analysis
     if uploaded_file is not None:
-        # Display the uploaded image
-        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        # Display the uploaded image for training
+        st.image(uploaded_file, caption="Uploaded Image (Training)", use_column_width=True)
 
         # Load and preprocess the test image
         st.write("Processing the image...")
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
-        st.image(test_image, caption="Processed Image", use_column_width=True)
+        st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
         
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis=0)
