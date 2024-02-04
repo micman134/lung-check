@@ -58,7 +58,7 @@ elif page == "Performance Analysis":
     st.image('svm.PNG', caption="SVM Model", use_column_width=True)
 
     st.text("Model Accuracy")
-    st.image('accuracy.png', caption="Model Accuracy", use_column_width=True)
+    st.image('accuracy.PNG', caption="Model Accuracy", use_column_width=True)
     
     st.text("Model Loss")
     st.image('loss.PNG', caption="Model Accuracy", use_column_width=True)
