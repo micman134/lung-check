@@ -1,9 +1,9 @@
-
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load the saved model
 try:
@@ -51,7 +51,11 @@ if page == "Prediction":
         intermediate_output = intermediate_layer_model.predict(test_image)
 
         st.subheader("Intermediate Layer Activations")
-        st.image(intermediate_output[0, :, :, 0], caption="Intermediate Activation", use_column_width=True, cmap='viridis')
+
+        # Create an image with the desired colormap using Matplotlib
+        plt.imshow(intermediate_output[0, :, :, 0], cmap='viridis')
+        plt.axis('off')
+        st.pyplot()
 
         predictions = model.predict(test_image)
 
