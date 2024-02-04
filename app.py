@@ -55,7 +55,7 @@ elif page == "Performance Analysis":
     st.text("CNN Model Classification Report")
     st.image('cnn_classification_report.PNG', caption="CNN Model", use_column_width=True)
     st.text("SVM Model Classification Report")
-    st.image('svm.png', caption="SVM Model", use_column_width=True)
+    st.image('svm.PNG', caption="SVM Model", use_column_width=True)
 
     st.text("Model Accuracy")
     st.image('accuracy.png', caption="Model Accuracy", use_column_width=True)
