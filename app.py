@@ -17,13 +17,13 @@ class_labels = ['adenocarcinoma', 'large.cell.carcinoma', 'squamous.cell.carcino
 
 # Function to display limited rows of the pixel table with loading percentage
 def display_limited_rows_with_loading(pixel_table, num_rows=50):
-    progress_bar = st.progress(0)
-    for percent_complete in range(0, 101, 20):
-        time.sleep(1)
-        progress_bar.progress(percent_complete)
-
     st.subheader(f"Pixel Values of the Processed Image (Showing {num_rows} rows)")
     st.write(pixel_table.head(num_rows))
+
+# Function to display spinner in the center
+def display_spinner():
+    with st.spinner("Loading..."):
+        time.sleep(5)  # Delay for 5 seconds
 
 # Streamlit app
 st.title("Lung Cancer Detection")
@@ -113,6 +113,7 @@ elif page == "Processed Pixels":
 
         # Load and preprocess the test image
         st.write("Processing the image...")
+        display_spinner()  # Display spinner for 5 seconds
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
         st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
         
@@ -120,7 +121,7 @@ elif page == "Processed Pixels":
         test_image = np.expand_dims(test_image, axis=0)
         test_image = test_image / 255.0  # Normalize
 
-        # Display a table showing pixel values with loading percentage
+        # Display a table showing pixel values
         pixel_table = pd.DataFrame(test_image.reshape(-1, 3), columns=['Red', 'Green', 'Blue'])
         display_limited_rows_with_loading(pixel_table)
 
