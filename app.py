@@ -120,7 +120,7 @@ elif page == "Processed Pixels":
         # Load and preprocess the test image
         st.write("Processing the image...")
         spinner = display_spinner()  # Display spinner for 5 seconds
-        time.sleep(20)  # Add additional time if needed
+        time.sleep(100)  # Add additional time if needed
         spinner.empty()  # Remove the spinner
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
         st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
