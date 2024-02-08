@@ -43,7 +43,7 @@ if page == "Prediction":
 
     # Model performance analysis
     if uploaded_file is not None:
-        display_spinner()
+        
         # Display the uploaded image for training
         st.image(uploaded_file, caption="Uploaded Image (Training)", use_column_width=True)
 
