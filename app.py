@@ -22,7 +22,7 @@ def display_limited_rows_with_loading(pixel_table, num_rows=50):
 
 # Function to display class probabilities in a table
 def display_class_probabilities(predictions):
-    prob_df = pd.DataFrame({'Class': class_labels, 'Probability (%)': predictions[0] * 100})
+    prob_df = pd.DataFrame({'Cancer Class Category': class_labels, 'Probability (%)': predictions[0] * 100})
     st.table(prob_df.style.format({'Probability (%)': '{:.2f}%'}))
 
 # Function to display spinner in the center
