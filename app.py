@@ -42,11 +42,6 @@ if page == "Prediction":
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis=0)
         test_image = test_image / 255.0  # Normalize
-
-        # Display a table showing pixel values
-        st.subheader("Pixel Values of the Processed Image")
-        pixel_table = pd.DataFrame(test_image.reshape(-1, 3), columns=['Red', 'Green', 'Blue']).head(50)
-        st.table(pixel_table)
         
         # Perform inference for prediction
         st.write("Performing inference...")
