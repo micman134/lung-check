@@ -22,8 +22,9 @@ def display_limited_rows_with_loading(pixel_table, num_rows=50):
 
 # Function to display spinner in the center
 def display_spinner():
-    with st.spinner("Loading..."):
-        time.sleep(5)  # Delay for 5 seconds
+    spinner = st.empty()
+    spinner.text("Loading...")
+    return spinner
 
 # Streamlit app
 st.title("Lung Cancer Detection")
@@ -113,7 +114,9 @@ elif page == "Processed Pixels":
 
         # Load and preprocess the test image
         st.write("Processing the image...")
-        display_spinner()  # Display spinner for 5 seconds
+        spinner = display_spinner()  # Display spinner for 5 seconds
+        time.sleep(5)  # Add additional time if needed
+        spinner.empty()  # Remove the spinner
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
         st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
         
