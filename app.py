@@ -98,13 +98,13 @@ elif page == "Performance Analysis":
     st.image('loss.PNG', caption="Model Loss", use_column_width=True)
     
     st.text("Performance Analysis For Normal Lungs")
-    st.image('normal.png', caption="Normal Lungs", use_column_width=True)
+    st.image('normal_metrics.png', caption="Normal Lungs", use_column_width=True)
     st.text("Performance Analysis For Large cell carcinoma Cancer")
-    st.image('large.cell.carcinoma.png', caption="Large cell carcinoma Cancer", use_column_width=True)
+    st.image('large.cell.carcinoma_metrics.png', caption="Large cell carcinoma Cancer", use_column_width=True)
     st.text("Performance Analysis For Squamous cell carcinoma Cancer")
-    st.image('squamous.cell.carcinoma.png', caption="Squamous cell carcinoma Cancer", use_column_width=True)
+    st.image('squamous.cell.carcinoma_metrics.png', caption="Squamous cell carcinoma Cancer", use_column_width=True)
     st.text("Performance Analysis For Adenocarcinoma Cancer")
-    st.image('adenocarcinoma.png', caption="Adenocarcinoma Cancer", use_column_width=True)
+    st.image('adenocarcinoma_metrics.png', caption="Adenocarcinoma Cancer", use_column_width=True)
     
     st.subheader("Model Confusion Matrix")
     st.image('confusion_matrix.png', caption="Confusion Matrix", use_column_width=True)
