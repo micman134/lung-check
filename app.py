@@ -27,7 +27,7 @@ def display_class_probabilities(predictions):
 
 # Function to display spinner in the center
 def display_spinner():
-    spinner = st.empty()
+    spinner = st.spinner()
     spinner.text("Loading...")
     return spinner
 
