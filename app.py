@@ -20,6 +20,11 @@ def display_limited_rows_with_loading(pixel_table, num_rows=50):
     st.subheader(f"Pixel Values of the Processed Image (Showing {num_rows} rows)")
     st.write(pixel_table.head(num_rows))
 
+# Function to display class probabilities in a table
+def display_class_probabilities(predictions):
+    prob_df = pd.DataFrame({'Class': class_labels, 'Probability (%)': predictions[0] * 100})
+    st.table(prob_df.style.format({'Probability (%)': '{:.2f}%'}))
+
 # Function to display spinner in the center
 def display_spinner():
     spinner = st.empty()
@@ -69,9 +74,8 @@ if page == "Prediction":
 
         # Display probability scores for each class
         st.write("Class Probabilities:")
-        for label, probability in zip(class_labels, predictions[0] * 100):
-            st.write(f"{label}: {probability:.2f}%")
-        
+        display_class_probabilities(predictions)
+
         # Print the classification label with probability
         predicted_class_index = np.argmax(predictions)
         predicted_class_label = class_labels[predicted_class_index]
@@ -135,3 +139,4 @@ elif page == "Processed Pixels":
             file_name="pixel_table.csv",
             key="download_csv"
         )
+
