@@ -4,6 +4,7 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import time
 
 # Load the saved model
 try:
@@ -14,8 +15,13 @@ except Exception as e:
 # Define the relatable class labels
 class_labels = ['adenocarcinoma', 'large.cell.carcinoma', 'squamous.cell.carcinoma', 'normal']
 
-# Function to display limited rows of the pixel table
-def display_limited_rows(pixel_table, num_rows=50):
+# Function to display limited rows of the pixel table with loading percentage
+def display_limited_rows_with_loading(pixel_table, num_rows=50):
+    progress_bar = st.progress(0)
+    for percent_complete in range(0, 101, 20):
+        time.sleep(1)
+        progress_bar.progress(percent_complete)
+
     st.subheader(f"Pixel Values of the Processed Image (Showing {num_rows} rows)")
     st.write(pixel_table.head(num_rows))
 
@@ -114,9 +120,9 @@ elif page == "Processed Pixels":
         test_image = np.expand_dims(test_image, axis=0)
         test_image = test_image / 255.0  # Normalize
 
-        # Display a table showing pixel values
+        # Display a table showing pixel values with loading percentage
         pixel_table = pd.DataFrame(test_image.reshape(-1, 3), columns=['Red', 'Green', 'Blue'])
-        display_limited_rows(pixel_table)
+        display_limited_rows_with_loading(pixel_table)
 
         # Download button for CSV file
         st.download_button(
