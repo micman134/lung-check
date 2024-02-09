@@ -54,14 +54,17 @@ if page == "Prediction":
         for i in range(5, 0, -1):
             countdown_text.text(f"Countdown: {i}")
             time.sleep(1)
-        
+
+        countdown_text.empty()  # Clear countdown text
+
+        # Process the image and perform inference
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
         st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
-        
+
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis=0)
         test_image = test_image / 255.0  # Normalize
-        
+
         # Perform inference for prediction
         st.write("Performing inference...")
 
@@ -88,6 +91,8 @@ if page == "Prediction":
         predicted_class_label = class_labels[predicted_class_index]
         predicted_class_probability = predictions[0][predicted_class_index] * 100
         st.success(f'Predicted Class: {predicted_class_label} with {predicted_class_probability:.2f}% probability')
+
+# ... (rest of your code remains unchanged)
 
 elif page == "Performance Analysis":
     # Perform inference for performance analysis
