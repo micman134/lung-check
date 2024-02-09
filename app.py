@@ -34,7 +34,12 @@ def display_spinner():
 # Function for countdown
 def countdown(seconds, countdown_text):
     for i in range(seconds, 0, -1):
-        countdown_text.text(f"Countdown: {i}")
+        countdown_text.text(f"Uploading Image: {i}")
+        time.sleep(1)
+        
+def countdown2(seconds, countdown_text):
+    for i in range(seconds, 0, -1):
+        countdown_text.text(f"Training Uploaded Image: {i}")
         time.sleep(1)
 
 # Streamlit app
@@ -62,7 +67,7 @@ if page == "Prediction":
 
         # Countdown before showing processed image
         countdown_text2 = st.empty()
-        countdown(5, countdown_text2)
+        countdown2(10, countdown_text2)
         countdown_text2.empty()
 
         # Process the image and perform inference
