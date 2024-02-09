@@ -27,9 +27,7 @@ def display_class_probabilities(predictions):
 
 # Function to display spinner in the center
 def display_spinner():
-    spinner = st.spinner()
-    spinner.text("Loading...")
-    return spinner
+    return st.spinner()
 
 # Function for countdown with spinner
 def countdown_with_spinner(seconds, spinner):
