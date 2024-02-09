@@ -43,12 +43,18 @@ if page == "Prediction":
 
     # Model performance analysis
     if uploaded_file is not None:
-        
         # Display the uploaded image for training
         st.image(uploaded_file, caption="Uploaded Image (Training)", use_column_width=True)
 
         # Load and preprocess the test image
         st.write("Processing the image...")
+
+        # Countdown from 5 to 1
+        countdown_text = st.empty()
+        for i in range(5, 0, -1):
+            countdown_text.text(f"Countdown: {i}")
+            time.sleep(1)
+        
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
         st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
         
