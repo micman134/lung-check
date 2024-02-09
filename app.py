@@ -52,7 +52,7 @@ if page == "Prediction":
         # Countdown from 5 to 1
         countdown_text = st.empty()
         for i in range(5, 0, -1):
-            countdown_text.text(f"Countdown: {i}")
+            countdown_text.text(f"Training The Image: {i}")
             time.sleep(1)
 
         countdown_text.empty()  # Clear countdown text
