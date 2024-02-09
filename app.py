@@ -31,6 +31,12 @@ def display_spinner():
     spinner.text("Loading...")
     return spinner
 
+# Function for countdown
+def countdown(seconds):
+    for i in range(seconds, 0, -1):
+        st.text(f"Countdown: {i}")
+        time.sleep(1)
+
 # Streamlit app
 st.title("Lung Cancer Detection")
 
@@ -43,19 +49,17 @@ if page == "Prediction":
 
     # Model performance analysis
     if uploaded_file is not None:
+        # Countdown before showing uploaded image
+        countdown(5)
+
         # Display the uploaded image for training
         st.image(uploaded_file, caption="Uploaded Image (Training)", use_column_width=True)
 
         # Load and preprocess the test image
         st.write("Processing the image...")
 
-        # Countdown from 5 to 1
-        countdown_text = st.empty()
-        for i in range(5, 0, -1):
-            countdown_text.text(f"Training The Image: {i}")
-            time.sleep(1)
-
-        countdown_text.empty()  # Clear countdown text
+        # Countdown before showing processed image
+        countdown(5)
 
         # Process the image and perform inference
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
@@ -93,6 +97,7 @@ if page == "Prediction":
         st.success(f'Predicted Class: {predicted_class_label} with {predicted_class_probability:.2f}% probability')
 
 # ... (rest of your code remains unchanged)
+
 
 elif page == "Performance Analysis":
     # Perform inference for performance analysis
