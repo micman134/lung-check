@@ -74,9 +74,9 @@ if page == "Prediction":
       #  test_image = image.load_img(uploaded_file, target_size=(150, 150))
      #   st.image(test_image, caption="Processed Image (Training)", use_column_width=True)
 
-       # test_image = image.img_to_array(test_image)
-      #  test_image = np.expand_dims(test_image, axis=0)
-       # test_image = test_image / 255.0  # Normalize
+        test_image = image.img_to_array(test_image)
+        test_image = np.expand_dims(test_image, axis=0)
+        test_image = test_image / 255.0  # Normalize
 
         # Perform inference for prediction
         st.write("Performing inference...")
