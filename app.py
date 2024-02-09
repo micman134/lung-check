@@ -27,14 +27,15 @@ def display_class_probabilities(predictions):
 
 # Function to display spinner in the center
 def display_spinner():
-    return st.spinner()
+    spinner = st.spinner()
+    spinner.text("Loading...")
+    return spinner
 
-# Function for countdown with spinner
-def countdown_with_spinner(seconds, spinner):
+# Function for countdown
+def countdown(seconds, countdown_text):
     for i in range(seconds, 0, -1):
-        st.text(f"Countdown: {i}")
+        countdown_text.text(f"Countdown: {i}")
         time.sleep(1)
-    spinner.empty()
 
 # Streamlit app
 st.title("Lung Cancer Detection")
@@ -49,8 +50,9 @@ if page == "Prediction":
     # Model performance analysis
     if uploaded_file is not None:
         # Countdown before showing uploaded image
-        spinner1 = display_spinner()
-        countdown_with_spinner(5, spinner1)
+        countdown_text1 = st.empty()
+        countdown(5, countdown_text1)
+        countdown_text1.empty()
 
         # Display the uploaded image for training
         st.image(uploaded_file, caption="Uploaded Image (Training)", use_column_width=True)
@@ -59,8 +61,9 @@ if page == "Prediction":
         st.write("Processing the image...")
 
         # Countdown before showing processed image
-        spinner2 = display_spinner()
-        countdown_with_spinner(5, spinner2)
+        countdown_text2 = st.empty()
+        countdown(5, countdown_text2)
+        countdown_text2.empty()
 
         # Process the image and perform inference
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
