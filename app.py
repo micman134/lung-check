@@ -31,16 +31,12 @@ def display_spinner():
     spinner.text("Loading...")
     return spinner
 
-# Function for countdown
-def countdown(seconds, countdown_text):
+# Function for countdown with spinner
+def countdown_with_spinner(seconds, spinner):
     for i in range(seconds, 0, -1):
-        countdown_text.text(f"Uploading Image: {i}")
+        st.text(f"Countdown: {i}")
         time.sleep(1)
-        
-def countdown2(seconds, countdown_text):
-    for i in range(seconds, 0, -1):
-        countdown_text.text(f"Training Uploaded Image: {i}")
-        time.sleep(1)
+    spinner.empty()
 
 # Streamlit app
 st.title("Lung Cancer Detection")
@@ -55,9 +51,8 @@ if page == "Prediction":
     # Model performance analysis
     if uploaded_file is not None:
         # Countdown before showing uploaded image
-        countdown_text1 = st.empty()
-        countdown(5, countdown_text1)
-        countdown_text1.empty()
+        spinner1 = display_spinner()
+        countdown_with_spinner(5, spinner1)
 
         # Display the uploaded image for training
         st.image(uploaded_file, caption="Uploaded Image (Training)", use_column_width=True)
@@ -66,9 +61,8 @@ if page == "Prediction":
         st.write("Processing the image...")
 
         # Countdown before showing processed image
-        countdown_text2 = st.empty()
-        countdown2(10, countdown_text2)
-        countdown_text2.empty()
+        spinner2 = display_spinner()
+        countdown_with_spinner(5, spinner2)
 
         # Process the image and perform inference
         test_image = image.load_img(uploaded_file, target_size=(150, 150))
@@ -105,7 +99,6 @@ if page == "Prediction":
         predicted_class_probability = predictions[0][predicted_class_index] * 100
         st.success(f'Predicted Class: {predicted_class_label} with {predicted_class_probability:.2f}% probability')
 
-# ... (rest of your code remains unchanged)
 # ... (rest of your code remains unchanged)
 
 
